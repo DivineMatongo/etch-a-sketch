@@ -15,6 +15,12 @@ function createGrid(size) {
         for (let ii = 0; ii < size; ii++) {
             let cell = document.createElement("div");
             cell.addEventListener("mouseenter", (e) => {
+                if (e.buttons === 1) {
+                    e.target.classList.add("painted");
+                }
+            });
+            cell.addEventListener("mousedown", (e) => {
+                e.preventDefault();
                 e.target.classList.add("painted");
             });
             row.appendChild(cell);
