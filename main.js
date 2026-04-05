@@ -1,5 +1,6 @@
 let grid = document.querySelector("#grid");
 const BUTTON_SIZE = 75;   
+const STARTING_SIZE = 16;
 
 function sizeGrid() {
     availableHeight = window.innerHeight - BUTTON_SIZE;
@@ -22,4 +23,22 @@ function createGrid(size) {
     }
 }
 
-createGrid(16);
+function clearGrid() {
+    for (let row of grid.children) {
+        for (let cell of row.children) {
+            cell.classList.remove("painted");
+        }
+    }
+}
+
+document.querySelector("#buttons").addEventListener("click", (e) => {
+    if (e.target.textContent === "Clear Screen") {
+        clearGrid();
+    } else if (e.target.textContent === "Resize Grid") {
+        let size = prompt("Enter new size for grid");
+        grid.replaceChildren();
+        createGrid(Number(size));
+    }
+});
+
+createGrid(STARTING_SIZE);
