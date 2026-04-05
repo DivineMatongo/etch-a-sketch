@@ -8,6 +8,15 @@ function sizeGrid() {
     grid.style.width = grid.style.height = `${smallerDimension}px`;
 }
 
+function paintCell(target) {
+    if (target.classList.contains("painted")) {
+        target.style.opacity = `${Number(target.style.opacity) + 0.1}`
+    } else {
+        target.classList.add("painted");
+        target.style.opacity = "0.1";
+    }
+}
+
 function createGrid(size) {
     sizeGrid();
     for (let i = 0; i < size; i++) {
@@ -16,12 +25,12 @@ function createGrid(size) {
             let cell = document.createElement("div");
             cell.addEventListener("mouseenter", (e) => {
                 if (e.buttons === 1) {
-                    e.target.classList.add("painted");
+                    paintCell(e.target);
                 }
             });
             cell.addEventListener("mousedown", (e) => {
                 e.preventDefault();
-                e.target.classList.add("painted");
+                paintCell(e.target);
             });
             row.appendChild(cell);
         }
