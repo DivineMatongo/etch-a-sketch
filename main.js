@@ -1,7 +1,9 @@
 let grid = document.querySelector("#grid");
+const BUTTON_SIZE = 75;   
 
 function sizeGrid() {
-    const smallerDimension = Math.min(window.innerHeight, window.innerWidth);
+    availableHeight = window.innerHeight - BUTTON_SIZE;
+    const smallerDimension = Math.min(availableHeight, window.innerWidth);
     grid.style.width = grid.style.height = `${smallerDimension}px`;
 }
 
