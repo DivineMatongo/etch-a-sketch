@@ -35,9 +35,12 @@ document.querySelector("#buttons").addEventListener("click", (e) => {
     if (e.target.textContent === "Clear Screen") {
         clearGrid();
     } else if (e.target.textContent === "Resize Grid") {
-        let size = prompt("Enter new size for grid");
-        grid.replaceChildren();
-        createGrid(Number(size));
+        let size = Number(prompt("Enter new size for grid"));
+        if ((size) && (size > 0)) {
+            if (size > 100) size = 100;
+            grid.replaceChildren();
+            createGrid(size);
+        }
     }
 });
 
