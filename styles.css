@@ -13,3 +13,7 @@
     outline: solid 1px;
     flex: auto;
 }
+
+.painted {
+    background-color: green;
+}

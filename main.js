@@ -11,6 +11,9 @@ function createGrid(size) {
         let row = document.createElement("div");
         for (let ii = 0; ii < size; ii++) {
             let cell = document.createElement("div");
+            cell.addEventListener("mouseenter", (e) => {
+                e.target.classList.add("painted");
+            });
             row.appendChild(cell);
         }
         grid.appendChild(row);
